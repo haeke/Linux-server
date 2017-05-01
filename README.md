@@ -1,4 +1,4 @@
-Linux-Server-Configuration
+#Linux-Server-Configuration
 
 - In this project, a linux server has been configured with apache to serve the Catalog project site.
 
