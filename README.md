@@ -129,7 +129,6 @@
         - choose none of the above then UTC 
 
 14. Installed postgresql to create the catalog database 
-    - reference: https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps 
     - sudo apt-get install postgresql 
     - installed psycopg2 with command 
         - cmd - sudo apt-get install postgresql python-psycopg2 
@@ -146,3 +145,6 @@
             - cmd grant all privileges on database catalog to catalog; 
     - create the database schema 
         - cmd - sudo python database_setup.py
+## References 
+    - Deploy a Flask app on ubuntu VPS https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+    - Secure a PostgreSQL on Ubuntu https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps 
