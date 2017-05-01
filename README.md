@@ -71,15 +71,15 @@
 
 6. Created a wsgi file to serve the flask app. 
     - the folder structure for my application is as below 
-        | /src/fullstack-nanodegree-vm/
-        | - catalog 
-        | - catalog 
-        |   ----template
-        |   ----static
-        |   ----catalogitems.py 
-        |   ----catalog.wsgi
-        |   ----client_secrets.json
-        |   ----__init__.py  
+      -  | /src/fullstack-nanodegree-vm/
+      -  | - catalog 
+      -  | - catalog 
+      -  |   ----template
+      -  |   ----static
+      -  |   ----catalogitems.py 
+      -  |   ----catalog.wsgi
+      -  |   ----client_secrets.json
+      -  |   ----__init__.py  
 
     - the catalog wsgi file contains the system path to the catalog project 
 ```
