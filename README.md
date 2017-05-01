@@ -2,7 +2,7 @@
 
 - In this project, a linux server has been configured with apache to serve the Catalog project site.
 
-- To visit the server go to - IP Address
+- To visit the server go to - http://54.224.46.78/
 
 ## Deploying the App 
 
