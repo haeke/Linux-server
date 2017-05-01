@@ -1,87 +1,96 @@
-# Project Title
+# Linux-Server-Configuration
 
-One Paragraph of project description goes here
+- In this project, a linux server has been configured with apache to serve the Catalog project site.
 
-## Getting Started
+- To visit the server go to - IP Address
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Deploying the App 
 
-### Prerequisites
+1. Installed apache 
+    - run command sudo apt-get update
+    - run command sudo apt-get install apache2
+2. Installed and enabled mod_wsgi 
+    - cmd - sudo apt-get install libapache2-mod-wsgi python-dev
+    - cmd - enable mod_wsgi sudo a2enmod wsgi
 
-What things you need to install the software and how to install them
+3. Installed Flask 
+    - cmd - sudo apt-get install python-pip
+    - cmd - sudo pip install Flask
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+4. A virtual host has been configured and enabled for the catalog app
+    - cmd - sudo nano /etc/apache2/sites-available/catalog-app.conf
 
 ```
-until finished
+<VirtualHost *:80>
+           The ServerName directive sets the request scheme, hostname and port that
+           the server uses to identify itself. This is used when creating
+           redirection URLs. In the context of virtual hosts, the ServerName
+           specifies what hostname must appear in the request's Host: header to
+           match this virtual host. For the default virtual host (this file) this
+           value is not decisive as it is used as a last resort host regardless.
+           However, you must set it for any further virtual host explicitly.
+          ServerName www.example.com
+
+        ServerAdmin webmaster@localhost
+
+           Define WSGI parameters. The daemon process runs as the www-data user.
+        WSGIDaemonProcess catalog user=www-data group=www-data threads=5
+        WSGIProcessGroup catalog
+        WSGIApplicationGroup %{GLOBAL}
+
+           Define the location of the app's WSGI file
+        WSGIScriptAlias / /srv/fullstack-nanodegree-vm/catalog/catalog/catalog.wsgi
+
+           Allow Apache to serve the WSGI app from the catalog app directory
+        <Directory /srv/fullstack-nanodegree-vm/catalog/catalog/>
+                Require all granted
+        </Directory>
+
+           Setup the static directory (contains CSS, Javascript, etc.)
+        Alias /static /srv/fullstack-nanodegree-vm/catalog/catalog/static
+
+           Allow Apache to serve the files from the static directory
+        <Directory  /srv/fullstack-nanodegree-vm/catalog/catalog/static/>
+                Require all granted
+        </Directory>
+
+           Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+           error, crit, alert, emerg.
+           It is also possible to configure the loglevel for particular
+           modules, e.g.
+          LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+5. Enabled the virtual host that was created 
+ - cmd - sudo a2ensite catalog-app
 
-## Running the tests
+6. Created a wsgi file to serve the flask app. 
+    - the folder structure for my application is as below 
+        | /src/fullstack-nanodegree-vm/
+        | - catalog 
+        | - catalog 
+        |   ----template
+        |   ----static
+        |   ----catalogitems.py 
+        |   ----catalog.wsgi
+        |   ----client_secrets.json
+        |   ----__init__.py  
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+    - the catalog wsgi file contains the system path to the catalog project 
 ```
-Give an example
+!/usr/bin/python
+        import sys
+        import logging
+        logging.basicConfig(stream=sys.stderr)
+        sys.path.insert(0,"/srv/fullstack-nanodegree-vm/catalog")
+        sys.path.append('/usr/bin/python')
+
+        from catalog import app as application
+        application.secret_key = 'Secret'
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
