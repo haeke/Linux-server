@@ -110,6 +110,7 @@
                 - created authorized_keys file with public key information that was generated 
         - granted permission on my local machine for the key that was generated 
             -cmd chmod 700 .ssh and chmod 644 .ssh/authorized_keys 
+        - modified PasswordAuthentication to yes in /etc/ssh/sshd_config 
 10. SSH can be run to login as the grader user 
     - cmd - ssh -i <key location> grader@ipaddress -p 22000
 
