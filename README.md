@@ -95,7 +95,7 @@
 ```
 
 7. The project.py file has been renamed to __init__.py in order for project to run the Flask app 
-
+(note - line 20 of the __init__.py file contains the full path leading to the .json file )
     
 8. Restart the apache server to make sure that the app is working 
     - cmd - sudo service apache2 restart 
@@ -106,15 +106,17 @@
     - sudo access granted by creating file named grader in the /etc/sudoers.d directory 
         - cmd - sudo nano /etc/sudoers.d/grader 
             - added line grader ALL=(ALL:ALL) ALL 
-    - created ssh key by running the ssh-keygen command on a local machine 
+    - created ssh key by running the ssh-keygen command on a local machine [key will be provided seperately]
         - added public key on the virtual server 
             - created directory .ssh 
                 - created authorized_keys file with public key information that was generated 
         - granted permission on my local machine for the key that was generated 
             -cmd chmod 700 .ssh and chmod 644 .ssh/authorized_keys 
         - modified PasswordAuthentication to yes in /etc/ssh/sshd_config 
-10. SSH can be run to login as the grader user 
-    - cmd - ssh -i <key location> grader@ipaddress -p 22000
+10. SSH can be run to login as the grader user on port 2200
+    - Modified /etc/ssh/sshd_config listen for 2200 over 22
+    - cmd - ssh -i <key location> grader@ipaddress -p 2200
+    
 
 11. Check for updates and install and packages
     - cmd sudo apt-get update 
@@ -146,7 +148,7 @@
             - cmd alter role catalog with password 'password';
         - granted catalog permission to the catalog database 
             - cmd grant all privileges on database catalog to catalog; 
-    - create the database schema 
+    - created the database schema 
         - cmd - sudo python database_setup.py
 ## References 
     - Deploy a Flask app on ubuntu VPS https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
