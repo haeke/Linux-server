@@ -70,16 +70,19 @@
  - cmd - sudo a2ensite catalog-app
 
 6. Created a wsgi file to serve the flask app. 
+    - created folders srv/fulstack-nanodegree-vm/catalog and then
+    - cloned catalog respository using git clone https://github.com/waehake/catalog.git catalog
     - the folder structure for my application is as below 
       -  | /src/fullstack-nanodegree-vm/
       -  | - catalog (folder)
-      -  | - catalog (folder)
+      -  | -- catalog (folder)
       -  |   ----template (folder)
       -  |   ----static (folder)
       -  |   ----catalogitems.py 
       -  |   ----catalog.wsgi
       -  |   ----client_secrets.json
       -  |   ----__init__.py  
+   
 
     - the catalog wsgi file contains the system path to the catalog project 
 ```
