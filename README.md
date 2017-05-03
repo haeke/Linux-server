@@ -99,6 +99,7 @@
 
 7. The project.py file has been renamed to __init__.py in order for project to run the Flask app 
 (note - line 20 of the __init__.py file contains the full path leading to the .json file )
+    - client_secrets.json and fb_clients_secrets.json file's have been modified to add the server IP 34.205.127.136/
     
 8. Restart the apache server to make sure that the app is working 
     - cmd - sudo service apache2 restart 
