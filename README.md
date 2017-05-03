@@ -2,7 +2,7 @@
 
 - In this project, a linux server has been configured with apache to serve the Catalog project site.
 
-- To visit the server go to - http://54.224.46.78/
+- To visit the server go to - http://34.205.127.136/
 
 ## Deploying the App 
 
@@ -72,17 +72,17 @@
 6. Created a wsgi file to serve the flask app. 
     - the folder structure for my application is as below 
       -  | /src/fullstack-nanodegree-vm/
-      -  | - catalog 
-      -  | - catalog 
-      -  |   ----template
-      -  |   ----static
+      -  | - catalog (folder)
+      -  | - catalog (folder)
+      -  |   ----template (folder)
+      -  |   ----static (folder)
       -  |   ----catalogitems.py 
       -  |   ----catalog.wsgi
       -  |   ----client_secrets.json
       -  |   ----__init__.py  
 
     - the catalog wsgi file contains the system path to the catalog project 
-```
+    ```
 !/usr/bin/python
         import sys
         import logging
@@ -93,7 +93,9 @@
         from catalog import app as application
         application.secret_key = 'Secret'
 ```
+
 7. The project.py file has been renamed to __init__.py in order for project to run the Flask app 
+
     
 8. Restart the apache server to make sure that the app is working 
     - cmd - sudo service apache2 restart 
@@ -149,3 +151,4 @@
 ## References 
     - Deploy a Flask app on ubuntu VPS https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
     - Secure a PostgreSQL on Ubuntu https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps 
+    - Configuring Virtual hosts - https://serversforhackers.com/configuring-apache-virtual-hosts
