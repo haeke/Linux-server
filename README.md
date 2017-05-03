@@ -82,16 +82,16 @@
       -  |   ----__init__.py  
 
     - the catalog wsgi file contains the system path to the catalog project 
-    ```
-!/usr/bin/python
-        import sys
-        import logging
-        logging.basicConfig(stream=sys.stderr)
-        sys.path.insert(0,"/srv/fullstack-nanodegree-vm/catalog")
-        sys.path.append('/usr/bin/python')
+```
+    !/usr/bin/python
+            import sys
+            import logging
+            logging.basicConfig(stream=sys.stderr)
+            sys.path.insert(0,"/srv/fullstack-nanodegree-vm/catalog")
+            sys.path.append('/usr/bin/python')
 
-        from catalog import app as application
-        application.secret_key = 'Secret'
+            from catalog import app as application
+            application.secret_key = 'Secret'
 ```
 
 7. The project.py file has been renamed to __init__.py in order for project to run the Flask app 
