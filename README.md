@@ -110,13 +110,13 @@
     - sudo access granted by creating file named grader in the /etc/sudoers.d directory 
         - cmd - sudo nano /etc/sudoers.d/grader 
             - added line grader ALL=(ALL:ALL) ALL 
-    - created ssh key by running the ssh-keygen command on a local machine [key will be provided seperately]
-        - added public key on the virtual server 
+    - created ssh key using Amazon EC2 KeyPair Generation
+            -Reference - http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair
             - created directory .ssh 
                 - created authorized_keys file with public key information that was generated 
         - granted permission on my local machine for the key that was generated 
             -cmd chmod 700 .ssh and chmod 644 .ssh/authorized_keys 
-        - modified PasswordAuthentication to yes in /etc/ssh/sshd_config 
+        - modified PasswordAuthentication to no in /etc/ssh/sshd_config ( no password authentication )
 10. SSH can be run to login as the grader user on port 2200
     - Modified /etc/ssh/sshd_config listen for 2200 over 22
     - cmd - ssh -i <key location> grader@ipaddress -p 2200
