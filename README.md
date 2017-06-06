@@ -71,7 +71,7 @@
 
 6. Created a wsgi file to serve the flask app. 
     - created folders srv/fulstack-nanodegree-vm/catalog and then
-    - cloned catalog respository using git clone https://github.com/waehake/catalog.git catalog
+    - cloned catalog respository using git clone https://github.com/haeke/catalog.git catalog
     - the folder structure for my application is as below 
       -  | /src/fullstack-nanodegree-vm/
       -  | - catalog (folder)
